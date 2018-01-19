@@ -121,7 +121,7 @@ int arch_update_cpu_topology(void)
 	return retval;
 }
 
-static inline void smpboot_setup_warm_reset_vector(unsigned long start_eip)
+void smpboot_setup_warm_reset_vector(unsigned long start_eip)
 {
 	unsigned long flags;
 
@@ -137,6 +137,7 @@ static inline void smpboot_setup_warm_reset_vector(unsigned long start_eip)
 							start_eip & 0xf;
 	pr_debug("3.\n");
 }
+EXPORT_SYMBOL(smpboot_setup_warm_reset_vector);
 
 static inline void smpboot_restore_warm_reset_vector(void)
 {
@@ -737,7 +738,7 @@ wakeup_secondary_cpu_via_nmi(int apicid, unsigned long start_eip)
 	return (send_status | accept_status);
 }
 
-static int
+int
 wakeup_secondary_cpu_via_init(int phys_apicid, unsigned long start_eip)
 {
 	unsigned long send_status = 0, accept_status = 0;
@@ -850,6 +851,7 @@ wakeup_secondary_cpu_via_init(int phys_apicid, unsigned long start_eip)
 
 	return (send_status | accept_status);
 }
+EXPORT_SYMBOL(wakeup_secondary_cpu_via_init);
 
 /* reduce the number of lines printed when booting a large cpu count system */
 static void announce_cpu(int cpu, int apicid)

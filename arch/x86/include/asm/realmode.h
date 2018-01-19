@@ -9,6 +9,8 @@
 #define TH_FLAGS_SME_ACTIVE_BIT		0
 #define TH_FLAGS_SME_ACTIVE		BIT(TH_FLAGS_SME_ACTIVE_BIT)
 
+#define FRIEND_LOADER_TRAMPOLINE_SIGNATURE 0x4a70726b
+
 #ifndef __ASSEMBLY__
 
 #include <linux/types.h>
