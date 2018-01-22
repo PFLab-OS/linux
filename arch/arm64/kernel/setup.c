@@ -241,6 +241,7 @@ static void __init request_standard_resources(void)
 }
 
 u64 __cpu_logical_map[NR_CPUS] = { [0 ... NR_CPUS-1] = INVALID_HWID };
+EXPORT_SYMBOL(__cpu_logical_map);
 
 void __init setup_arch(char **cmdline_p)
 {

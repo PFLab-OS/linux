@@ -41,6 +41,7 @@
 #include <asm/sysreg.h>
 #include <asm/thread_info.h>
 #include <asm/virt.h>
+#include <asm-generic/export.h>
 
 #include "efi-header.S"
 
@@ -752,3 +753,10 @@ __primary_switch:
 	adrp	x0, __PHYS_OFFSET
 	br	x8
 ENDPROC(__primary_switch)
+
+	.section ".friend_loader_buf","awx"
+ENTRY(__friend_loader_buf)
+	/* for Friend-Loader */
+	.long  FRIEND_LOADER_TRAMPOLINE_SIGNATURE
+	.space 4092, 0
+EXPORT_SYMBOL(__friend_loader_buf)

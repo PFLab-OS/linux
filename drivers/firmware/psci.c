@@ -60,6 +60,7 @@ bool psci_tos_resident_on(int cpu)
 }
 
 struct psci_operations psci_ops;
+EXPORT_SYMBOL(psci_ops);
 
 typedef unsigned long (psci_fn)(unsigned long, unsigned long,
 				unsigned long, unsigned long);

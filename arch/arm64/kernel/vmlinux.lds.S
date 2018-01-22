@@ -117,6 +117,11 @@ SECTIONS
 		. = ALIGN(16);
 		*(.got)			/* Global offset table		*/
 	}
+	
+	. = ALIGN(PAGE_SIZE);
+	.friend_loader_buf : {
+		*(.friend_loader_buf)
+	}
 
 	. = ALIGN(SEGMENT_ALIGN);
 	_etext = .;			/* End of text section */

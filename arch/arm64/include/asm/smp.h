@@ -27,6 +27,8 @@
 /* Fatal system error detected by secondary CPU, crash the system */
 #define CPU_PANIC_KERNEL	(3)
 
+#define FRIEND_LOADER_TRAMPOLINE_SIGNATURE 0x4a70726b
+
 #ifndef __ASSEMBLY__
 
 #include <asm/percpu.h>
@@ -91,6 +93,8 @@ struct secondary_data {
 extern struct secondary_data secondary_data;
 extern long __early_cpu_boot_status;
 extern void secondary_entry(void);
+
+extern uint32_t __friend_loader_buf[];
 
 extern void arch_send_call_function_single_ipi(int cpu);
 extern void arch_send_call_function_ipi_mask(const struct cpumask *mask);
