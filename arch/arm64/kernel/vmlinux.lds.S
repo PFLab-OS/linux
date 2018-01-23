@@ -118,11 +118,6 @@ SECTIONS
 		*(.got)			/* Global offset table		*/
 	}
 	
-	. = ALIGN(PAGE_SIZE);
-	.friend_loader_buf : {
-		*(.friend_loader_buf)
-	}
-
 	. = ALIGN(SEGMENT_ALIGN);
 	_etext = .;			/* End of text section */
 
@@ -182,6 +177,11 @@ SECTIONS
 	_data = .;
 	_sdata = .;
 	RW_DATA_SECTION(L1_CACHE_BYTES, PAGE_SIZE, THREAD_ALIGN)
+
+	. = ALIGN(PAGE_SIZE);
+	.friend_loader_buf : {
+		*(.friend_loader_buf)
+	}
 
 	/*
 	 * Data written with the MMU off but read with the MMU on requires
