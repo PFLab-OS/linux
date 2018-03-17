@@ -14,11 +14,12 @@ GLOBAL(heap_end)
 	.long	rm_stack
 
 	.align 4096
-__friend_loader_buf:
+__friend_loader_buf_start:
 	/* for Friend-Loader */
 	.long  0
 	.long  FRIEND_LOADER_TRAMPOLINE_SIGNATURE
-	.space 4088, 0
+	.space 4088 + 3 * 4096, 0
+__friend_loader_buf_end:
 
 	.bss
 	.balign	16
